@@ -1,0 +1,38 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		cadeia produtos[3] = {"MOUSE","TECLADO","MONITOR"}
+		cadeia codigo[3] = {"G6-1","G6-2","G6-3"}
+		real valor[3] = {50.0,150.0,1500.0}
+		inteiro estoque[3] = {10,20,30}
+		inteiro carrinho[3] = {0,0,0}
+		
+		
+		escreva(" ______________________________________________\n")
+		escreva("| $   $                                  $   $ |\n")
+		escreva("|   $        SISTEMA DE VENDAS ONLINE      $   |\n")
+		escreva("|               37GEN COMÉRCIOS LTDA           |\n")
+		escreva("|_$___$__________________________________$___$_|\n")
+		escreva("\n  >>  TUDO QUE VOCÊ PRECISA AQUI  <<     \n")
+		escreva("\n\n")
+		escreva(" ______________________________________________\n")
+		escreva("|                                              |\n")
+		escreva("|       > > >   TABELA DE PRODUTOS    < < <    |\n")
+		escreva("|______________________________________________|\n")
+		escreva("|__PRODUTOS_____|___CÓD___|__VALOR_UNT.|ESTOQUE|\n")
+		escreva("|MONITOR        |    1    |    R$ 50,00|  10   |\n")
+		escreva("|TECLADO        |    2    |   R$ 150,00|  20   |\n")
+		escreva("|MOUSE          |    3    |  R$ 1500,00|  30   |\n")
+		escreva("|CABO USB       |    4    |            |       |\n")
+		escreva("|CARREGADOR     |    5    |            |       |\n")
+		escreva("|MOUSE PAD      |    6    |            |       |\n")
+		escreva("|FONE DE OUVIDO |    7    |            |       |\n")
+		escreva("|FONE DE OUVIDO |    7    |            |       |\n")
+		escreva("|FONE DE OUVIDO |    7    |            |       |\n")
+		escreva("|_______________|_________|____________|_______|\n")
+		 
+		
+	}
+}

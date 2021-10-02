@@ -1,3 +1,4 @@
+//so pra commitar pelo vscode
 programa
 {
 	inclua biblioteca Matematica --> m

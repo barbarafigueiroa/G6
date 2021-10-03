@@ -9,7 +9,7 @@ programa
 		cadeia codigoc[10] = {"","","","","","","","","",""}			
 		real valor[10] = {50.0,150.0,900.0,20.00,50.00,30.00,50.00,20.00,40.00,55.00}
 		real valorc[10] = {0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00}		
-		inteiro estoque[10] = {10,10,10,10,10,10,10,10,10,10}
+		inteiro estoque[10] = {10,20,30,40,50,60,70,80,90,100}
 		inteiro carrinho[10] = {0,0,0,0,0,0,0,0,0,0}
 		caracter opcao
 		inteiro i=0,quantidade=0
@@ -29,7 +29,7 @@ programa
 		escreva("|   $        SISTEMA DE VENDAS ONLINE      $   |\n")
 		escreva("|               37GEN COMÉRCIOS LTDA           |\n")
 		escreva("|_$___$__________________________________$___$_|\n")
-		escreva("\n  >>  TUDO QUE VOCÊ PRECISA AQUI  <<     \n")
+		escreva("\n  >>      TUDO QUE VOCÊ PRECISA AQUI       << \n")
 		escreva("\n\n")
 		escreva(" ______________________________________________\n")
 		escreva("|                                              |\n")
@@ -66,9 +66,11 @@ programa
 				}
 				escreva("\n\nDIGITE O ÚLTIMO NÚMERO DO CÓDIGO: ")
 				leia(i)
-				se(i != 0 ou i != 1 ou i != 2 ou i != 3 ou i != 4 ou i != 5 ou i != 6 ou i != 7 ou i != 8 ou i != 9){
-					escreva("\nDESCULPE, OPÇÃO INVÁLIDA!")
-				}
+				//se(i != 0 ou i != 1 ou i != 2 ou i != 3 ou i != 4 ou i != 5 ou i != 6 ou i != 7 ou i != 8 ou i != 9){
+					//escreva("\nDESCULPE, OPÇÃO INVÁLIDA!")
+					
+				//}
+				
 				escreva(" _________________________________________________________\n")
 				escreva("|____COD.____|___PRODUTO____|__VALOR UNIT.__|___ESTOQUE___|\n")
 				escreva("\n "+codigo[i]+"\t"+produtos[i]+"\tR$"+valor[i]+ "\t      " +estoque[i])
@@ -80,7 +82,8 @@ programa
 		 	
 		 		se(quantidade>=estoque[i]){
 		 			escreva("QUANTIDADE INDISPONÍVEL NO ESTOQUE. ENTRAREMOS EM CONTATO EM CASO DE REPOSIÇÃO")		 		
-		 		}senao {
+		 		}
+		 		senao {
 		 			estoque[i]=estoque[i]-quantidade
 		 			carrinho[i]=carrinho[i]+quantidade
 		 			valorTotalCompra= valorTotalCompra+(quantidade*valor[i])
@@ -108,7 +111,7 @@ programa
 			
 			escreva("\n ___>>> + 9 % DE IMPOSTO ESTADUAL SOBRE O PRODUTO <<<____")
 			escreva("\n                                                         ")
-			escreva("\n  VALOR ACUMULADO NO CARRINHO:               R$ "+valorTotalCompra+"\n")
+			escreva("\n  VALOR ACUMULADO NO CARRINHO:               R$ "+m.arredondar(valorTotalCompra,2)+"\n")
 			escreva(" ________________________________________________________")
 			
 			
@@ -136,12 +139,10 @@ programa
 				escreva("____________________________________________________________\n")
 				escreva("\nVALOR TOTAL DA COMPRA: R$", m.arredondar(valorTotalCompra,2),"\n")
 				escreva("____________________________________________________________\n")
-				escreva("\nDESEJA GERAR O BOLETO PARA O PAGAMENTO? ")
+				escreva("\nDESEJA GERAR O BOLETO PARA O PAGAMENTO? (S/N) ")
 				leia(respostaBoleto)
-				se(respostaBoleto =='n' ou respostaBoleto == 'N'){
-					escreva("\n >>> OBRIGADE PELA PREFERÊNCIA <<<\n")
-				}
-				senao se(respostaBoleto == 's' ou respostaBoleto == 'S'){
+				se(respostaBoleto =='S' ou respostaBoleto == 's'){
+					
 					escreva("\n\n____________________________________________________________\n")
 					escreva("\nNUMERO DO BOLETO: 36546845614684654868468468786460000000 64\n")
 					escreva("____________________________________________________________\n")
@@ -153,7 +154,8 @@ programa
 							escreva("\n\n_____________________________\n")
 							escreva("\nNOTA FISCAL: 216546454654")
 							escreva("\n_____________________________\n")
-						}senao se(proximoPasso == 'n' ou proximoPasso == 'N'){
+						}
+						senao se(proximoPasso == 'n' ou proximoPasso == 'N'){
 							escreva("\n >>> OBRIGADE PELA PREFERÊNCIA <<<\n")
 						}
 						senao se(proximoPasso != 's' ou proximoPasso != 'S' ou proximoPasso != 'n' ou proximoPasso != 'N'){
@@ -162,12 +164,21 @@ programa
 							leia(respostaIndecisa)
 							se(respostaIndecisa == 's' ou respostaIndecisa == 'S'){
 								escreva("/nVOCÊ SERÁ REDIRECIONADO A PÁGINA INICIAL")
+								//como faz pra voltar pro início do programa?
 							}
 						}
 
+				
 				}
+				senao se(respostaBoleto =='n' ou respostaBoleto == 'N'){
+					escreva("\n >>> OBRIGADE PELA PREFERÊNCIA <<<\n")
+
+				}
+				senao se(respostaBoleto !='N' ou respostaBoleto != 'n' ou respostaBoleto !='S' ou respostaBoleto != 's'){
+					escreva("\nDESCULPE, OPÇÃO INVÁLIDA!")
+				}
+				
 			}
-			
 			senao se(formaPagamento == 2){
 				escreva("\nGOSTARIA DE PARCELAR? ")
 				leia(respostaParcelas)
@@ -177,9 +188,9 @@ programa
 					valorParcelado = valorComImpostoParcela / 2
 					escreva("\n >> PARA COMPRAS EFETUADAS E PARCELADAS NO CARTÃO DE CRÉDITO HAVERÁ ACRESCIMO DE 15% SOBRE O VALOR TOTAL DA COMPRA <<\n")
 					escreva("\n____________________________________________________________\n")
-					escreva("\nVALOR DA PARCELA: R$", valorParcelado)
+					escreva("\nVALOR DA PARCELA: R$", m.arredondar(valorParcelado,2))
 					escreva("\n____________________________________________________________\n")
-					escreva("\nVALOR TOTAL DA SUA COMPRA: ", valorTotalCompra)
+					escreva("\nVALOR TOTAL DA SUA COMPRA: ", m.arredondar(valorTotalCompra,2))
 					escreva("\n____________________________________________________________\n")
 					escreva("\n\nDESEJA GERAR O BOLETO PARA O PAGAMENTO? ")
 					leia(respostaBoleto)
@@ -197,7 +208,8 @@ programa
 							escreva("\n\n_____________________________\n")
 							escreva("\nNOTA FISCAL: 216546454654")
 							escreva("\n_____________________________\n")
-						}senao se(proximoPasso == 'n' ou proximoPasso == 'N'){
+						}
+						senao se(proximoPasso == 'n' ou proximoPasso == 'N'){
 							escreva("\n >>> OBRIGADE PELA PREFERÊNCIA <<<\n")
 						}
 						senao se(proximoPasso != 's' ou proximoPasso != 'S' ou proximoPasso != 'n' ou proximoPasso != 'N'){
@@ -216,7 +228,7 @@ programa
 				}
 				senao se (respostaParcelas == 'n' ou respostaParcelas == 'N'){
 
-					escreva("\nVALOR TOTAL DA COMPRA: R$", valorTotalCompra)
+					escreva("\nVALOR TOTAL DA COMPRA: R$", m.arredondar(valorTotalCompra,2))
 					escreva("\n\nDESEJA GERAR O BOLETO PARA O PAGAMENTO? ")
 					leia(respostaBoleto)
 					se(respostaBoleto =='n' ou respostaBoleto == 'N'){
@@ -234,7 +246,8 @@ programa
 							escreva("\n\n_____________________________\n")
 							escreva("\nNOTA FISCAL: 216546454654")
 							escreva("\n_____________________________\n")
-						}senao se(proximoPasso == 'n' ou proximoPasso == 'N'){
+						}
+						senao se(proximoPasso == 'n' ou proximoPasso == 'N'){
 							escreva("\n >>> OBRIGADE PELA PREFERÊNCIA <<<\n")
 						}
 						senao se(proximoPasso != 's' ou proximoPasso != 'S' ou proximoPasso != 'n' ou proximoPasso != 'N'){
@@ -255,33 +268,42 @@ programa
 			
 					}
 					
-			}
-			senao se(respostaParcelas != 's' ou respostaParcelas != 'S' ou respostaParcelas != 'n' ou respostaParcelas != 'N'){
-				escreva("DESCULPE, OPÇÃO INVÁLIDA!")
+				}
+				senao se(respostaParcelas != 's' ou respostaParcelas != 'S' ou respostaParcelas != 'n' ou respostaParcelas != 'N'){
+					escreva("DESCULPE, OPÇÃO INVÁLIDA!")
 				
-			}
+				}
 
 				
+				}
+				senao se(formaPagamento != 1 ou formaPagamento != 2 ){
+					escreva("\nDESCULPE, OPÇÃO INVÁLIDA!")
+				
+				}
+				
+			}						
+			senao se(opcao == 'n' ou opcao == 'N') {
+				escreva("\n >>>:  OBRIGADA PELA VISITA. VOLTE SEMPRE! :<<< ")
+
 			}
-			
-					
-			}
-			senao se(formaPagamento != 1 ou formaPagamento != 2 ){
+			senao se(opcao != 'n' ou opcao != 'N' ou opcao != 's' ou opcao != 'S'){
 				escreva("\nDESCULPE, OPÇÃO INVÁLIDA!")
-				//validar para entrada de letras
-				
 			}
-			
-		
-		senao {
-			
-          	escreva("\n >>>:  OBRIGADA PELA VISITA. VOLTE SEMPRE! :<<< ")
-
-			}
-
-			
+					
 		}
 		
 	}
 
 
+
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 7774; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz;
+ */
